@@ -1,0 +1,16 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <title>Характеристики книги</title>
+</head>
+<body>
+    <h2>Характеристики книги</h2>
+    <p>Назва: {{ book.name }}</p>
+    <p>Жанр: {{ book.description }}</p>
+    <!-- Додаткові дані про книгу -->
+</body>
+</html>
+{% endblock %}

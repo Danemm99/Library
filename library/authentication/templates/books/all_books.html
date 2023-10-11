@@ -1,0 +1,28 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <title>Всі книги</title>
+</head>
+<body>
+    <h2>Всі книги</h2>
+    <form method="get" action="{% url 'filter_books' %}">
+        <label for="genre">Виберіть жанр:</label>
+        <select name="genre" id="genre">
+            <option value="">Усі жанри</option>
+            <option value="Фантастика">Фантастика</option>
+            <option value="Драма">Драма</option>
+            <option value="Пригоди">Пригоди</option>
+        </select>
+        <button type="submit">Фільтрувати</button>
+    </form>
+
+    {% for book in books %}
+        <p><a href="{% url 'view_book' book.id %}">{{ book.name }}</a></p>
+    {% empty %}
+        <p>Немає доступних книг.</p>
+    {% endfor %}
+</body>
+{% endblock %}

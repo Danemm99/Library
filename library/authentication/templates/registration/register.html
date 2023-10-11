@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реєстрація</title>
+</head>
+<body>
+    <h1>Реєстрація</h1>
+    <form method="post" action="/register/">
+        {% csrf_token %}
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+            <label>Ім'я:
+                <input type="text" name="first_name" required>
+            </label><br>
+            <label>По батькові:
+                <input type="text" name="middle_name" required>
+            </label><br>
+            <label>Прізвище:
+                <input type="text" name="last_name" required>
+            </label><br>
+            <label>Електронна пошта:
+                <input type="email" name="email" required>
+            </label><br>
+            <label>Пароль:
+                <input type="password" name="password" required>
+            </label><br>
+            <label>Роль:
+                <select name="role">
+                    <option value="0">Користувач</option>
+                    <option value="1">Бібліотекар</option>
+                </select>
+            </label><br>
+        <p><input type="submit" value="Зареєструватися"> Вже маєте акаунт? <a href="{% url 'login' %}">Увійти</a></p>
+    </form>
+</body>
+</html>

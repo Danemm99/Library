@@ -1,0 +1,21 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <title>Дім</title>
+</head>
+<body>
+    <h2>Вітаємо у бібліотеці!</h2>
+    {% if request.session.user_id %}
+        <p>Ви зареєстровані як {{ user.first_name }} {{ user.last_name }}.</p>
+        <p>Ваша роль: {{ user.get_role_name }}</p>
+        <a href="{% url 'books' %}"><button>Інформація про всі книги</button></a>
+        <a href="{% url 'make_order' %}"><button>Зробити замовлення</button></a>
+        <a href="{% url 'logout' %}"><button>Вийти</button></a>
+    {% else %}
+        <p>Ви не зареєстровані. <a href="{% url 'login' %}"><button>Увійти</button></a></p>
+    {% endif %}
+</body>
+{% endblock %}

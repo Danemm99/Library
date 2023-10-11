@@ -1,0 +1,25 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <title>{{user.first_name}} {{user.last_name}}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+{% endblock %}
+
+{% block content %}
+<body>
+<span>
+    <p><b>Ім'я: </b> {{ user.first_name }}</p>
+    <p> <b>Прізвище: </b>{{ user.last_name }}</p>
+    <p><b>По батькові: </b>{{ user.middle_name }}</p>
+    <p><b>Email: </b>{{ user.email }}</p>
+    <p><b>Зареєстровано: </b>{{ user.created_at }}</p>
+    <p><b>Роль: </b> {{ user.get_role_name }}</p>
+    <br>
+
+    <a href="{% url 'all_user' %}">Назад</a>
+</span>
+</body>
+{% endblock %}

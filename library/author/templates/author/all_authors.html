@@ -1,0 +1,35 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+
+{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <title>Authors</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+{% endblock %}
+{%block content %}
+<body>
+<span>
+    <a href="{% url 'add_author_page' %}" style="background-color: rgb(30,255,30); color: black;">Додати нового автора</a>
+    <br>
+    <br>
+    <br>
+<ul>
+{% for author in authors %}
+    <li>
+            <hr>
+        {{ author.surname }}
+        {{ author.name}}
+        <br>
+        <br>
+        <a href="{{ author.get_absolute_url }}">Детальніше</a>
+        <br>
+        <br>
+    </li>
+{% endfor %}
+</ul>
+</span>
+</body>
+{% endblock %}

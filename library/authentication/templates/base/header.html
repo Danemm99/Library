@@ -1,0 +1,18 @@
+{% block header %}
+<head>
+<div class="header-menu">
+        <ul>
+            <li><a href="{% url 'home' %}">Моя сторінка</a></li>
+            <li><a href="{% url 'books' %}">Книжки</a></li>
+            <li><a href="{% url 'all_user' %}">Користувачі</a></li>
+            <li><a href="{% url 'make_order' %}">Зробити замовлення</a></li>
+            {% if librarian is True %}
+            <li><a href="{% url 'all_authors' %}">Автори</a></li>
+            <li><a href="{% url 'all_orders' %}">Замовлення</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    <br>
+    <br>
+</head>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <title>{{ author.name }} {{ author.surname }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+{% endblock %}
+{% block content %}
+<body>
+<p><b>Name:</b> {{ author.name }}</p>
+<p><b>Surname:</b> {{ author.surname }}</p>
+<p><b>Patronymic:</b> {{ author.patronymic }}</p>
+
+{% if books %}
+    <p class="books"><b>Books:</b> {% for book in books %}
+        {{ book.name }}
+    {% endfor %}
+    </p>
+{% else %}
+    <p class="error">Author doesn't have books yet:
+        <a href="{% url 'delete_author' author.id %}">Delete {{ author.name }} {{ author.surname }}</a>
+    </p>
+{% endif %}
+
+<a href="{% url 'all_authors' %}">Назад</a>
+</body>
+{% endblock %}

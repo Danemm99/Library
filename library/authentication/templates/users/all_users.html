@@ -1,0 +1,25 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <title>Library users</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+{% endblock %}
+{% block content %}
+<body>
+<ul>
+{% for user in users %}
+
+    <li>
+        {{ user.last_name }}
+        {{user.first_name}}<br><br>
+        <a href="{{ user.get_absolute_url }}">Детальніше</a>
+        <br>
+    </li>
+    <hr>
+{% endfor %}
+</ul>
+</body>
+{% endblock %}

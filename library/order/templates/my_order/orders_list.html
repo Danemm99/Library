@@ -1,0 +1,36 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <title>Список замовлень</title>
+    <style>
+        .order-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .order-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+{% endblock %}
+
+{% block content %}
+<body>
+    <h1>Список замовлень</h1>
+    <ul class="order-list">
+        {% for book in books %}
+            <li class="order-item">Назва: {{ book.name }} - Жанр: {{ book.description }}</li>
+        {% empty %}
+            <li>Немає доступних замовлень</li>
+        {% endfor %}
+    </ul>
+</body>
+{% endblock %}

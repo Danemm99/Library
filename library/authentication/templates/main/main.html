@@ -1,0 +1,17 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block head %}
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <title>Головна</title>
+</head>
+<body>
+<h1>
+    Вітаємо на головній сторінці!
+</h1>
+<a href="login"><button>Увійти</button></a>
+<a href="register"><button>Зареєструватися</button></a>
+</body>
+{% endblock %}

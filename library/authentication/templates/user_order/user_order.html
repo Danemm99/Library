@@ -1,0 +1,23 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <title>Нове замовлення</title>
+</head>
+<body>
+    <h1>Зробити замовлення</h1>
+    <form method="post" action="/home/make_order/">
+        {% csrf_token %}
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+            <label>Назва книги:
+                <input type="text" name="name" required>
+            </label><br>
+        <input type="submit" value="Зробити замовлення">
+    </form>
+</body>
+{% endblock %}
