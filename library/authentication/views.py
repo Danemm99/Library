@@ -49,6 +49,7 @@ def login_view(request):
             return render(request, 'login/login.html', {'error': 'Невірна пошта або пароль.'})
     return render(request, 'login/login.html')
 
+
 def logout_view(request):
      if 'user_id' in request.session:
          user_id = request.session.get('user_id')
@@ -82,48 +83,6 @@ def main(request):
     else:
         context = {'librarian': False}
     return render(request, 'main/main.html',context )
-
-# def all_books(request):
-#     books = Book.objects.all()
-#     return render(request, 'books/all_books.html', {'books': books})
-#
-# def view_book(request, book_id):
-#     book = Book.objects.get(id=book_id)
-#     return render(request, 'books/view_book.html', {'book': book})
-#
-#
-# def filter_books(request):
-#     genre = request.GET.get('genre')
-#     books = []
-#     if genre:
-#         books = Book.objects.filter(description=genre)
-#     else:
-#         books = Book.objects.all()
-#
-#     return render(request, 'books/all_books.html', {'books': books})
-
-# def make_order(request):
-#     if request.method == 'POST':
-#         name_of_book = request.POST['name']
-#
-#         if not Book.objects.filter(name=name_of_book).exists():
-#             return render(request, 'user_order/user_order.html', {'error': 'Такої книги немає у наявності.'})
-#
-#         user_id = request.session.get('user_id')
-#         book_id = Book.get_by_name(name_of_book).id
-#
-#         if Order.objects.filter(book_id=book_id, user_id=user_id).exists():
-#             return render(request, 'user_order/user_order.html', {'error': 'Таке замовлення вже існує.'})
-#
-#         # Створення користувача
-#         current_datetime = datetime.now()
-#         plated_end_at = current_datetime + timedelta(weeks=2)
-#         Order.objects.create(book_id=book_id, user_id=user_id, plated_end_at=plated_end_at)
-#
-#         redirect('make_order')
-#
-#     return render(request, 'user_order/user_order.html')
-
 
 def show_all_users(request):
     user_id = request.session.get('user_id')
