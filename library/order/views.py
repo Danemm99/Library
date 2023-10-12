@@ -26,7 +26,7 @@ def make_order(request):
         current_datetime = datetime.now()
         plated_end_at = current_datetime + timedelta(weeks=2)
         Order.objects.create(book_id=book_id, user_id=user_id, plated_end_at=plated_end_at)
- 
+
         redirect('make_order')
 
     return render(request, 'user_order/user_order.html', {'form': OrderForm()})

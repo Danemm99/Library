@@ -7,56 +7,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
     <style>
         /* Add your unique class names to CSS styles */
-        .add_author-container {
-            background-color: #ffffff;
-            border-radius: 5px;
-            padding: 20px;
-            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .add_author-form {
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        .add_author-label {
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .add_author-input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            font-size: 16px;
-        }
-
-        .add_author-submit {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-
-        .add_author-submit:hover {
-            background-color: #0056b3;
-        }
-
-        .add_author-link {
-            text-decoration: none;
-            color: #007bff;
-        }
-
-        .add_author-link:hover {
-            text-decoration: underline;
-        }
-
-        .add_author-error {
-            color: red;
-        }
+        
     </style>
 </head>
 {% endblock %}
@@ -69,20 +20,11 @@
         {% if error %}
             <p class="add_author-error">{{ error }}</p>
         {% endif %}
-        <label class="add_author-label">Ім'я:
-            <input class="add_author-input" type="text" name="name" required>
-        </label><br><br>
-
-        <label class="add_author-label">Прізвище:
-            <input class="add_author-input" type="text" name="surname" required>
-        </label><br><br>
-
-        <label class="add_author-label">По батькові:
-            <input class="add_author-input" type="text" name="patronymic" required>
-        </label><br><br>
-
+        {{ form }}
         <p><input class="add_author-submit" type="submit" value="Створити нового автора"></p>
         <p><a href="{% url 'all_authors' %}"> Назад </a></p>
+
+
     </form>
 </span>
 </body>
