@@ -35,9 +35,6 @@ def register(request):
     return render(request, 'registration/register.html')
 
 def login_view(request):
-    if CustomUser.objects.filter(is_active=True).exists():
-        return redirect('home')
-
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']
@@ -47,7 +44,7 @@ def login_view(request):
             # Логін користувача
             request.session['user_id'] = user.id
             CustomUser.objects.filter(id=user.id).update(is_active=True)
-            return render(request, 'login/login.html')
+            return redirect('home')
         else:
             return render(request, 'login/login.html', {'error': 'Невірна пошта або пароль.'})
     return render(request, 'login/login.html')
