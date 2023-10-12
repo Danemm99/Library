@@ -7,29 +7,29 @@ from authentication.models import CustomUser
 from django.http import HttpResponse
 from book.models import Book
 from order.models import Order
-
+from .forms import *
 from datetime import datetime, timedelta
 def make_order(request):
     if request.method == 'POST':
-        name_of_book = request.POST['name']
-
-        if not Book.objects.filter(name=name_of_book).exists():
+        form = OrderForm(request.POST)
+        book_id = request.POST['book_name']
+        if not Book.objects.filter(id=book_id).exists():
             return render(request, 'user_order/user_order.html', {'error': 'Такої книги немає у наявності.'})
 
         user_id = request.session.get('user_id')
-        book_id = Book.get_by_name(name_of_book).id
+        book_id = book_id
 
         if Order.objects.filter(book_id=book_id, user_id=user_id).exists():
-            return render(request, 'user_order/user_order.html', {'error': 'Таке замовлення вже існує.'})
+            return render(request, 'user_order/user_order.html', {'error': 'Таке замовлення вже існує.','form':form})
 
         # Створення користувача
         current_datetime = datetime.now()
         plated_end_at = current_datetime + timedelta(weeks=2)
         Order.objects.create(book_id=book_id, user_id=user_id, plated_end_at=plated_end_at)
-
+ 
         redirect('make_order')
 
-    return render(request, 'user_order/user_order.html')
+    return render(request, 'user_order/user_order.html', {'form': OrderForm()})
 
 
 def show_orders(request):
