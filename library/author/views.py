@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Author
 from authentication.models import CustomUser
-
+from .forms import *
 
 def show_all_authors(request):
     user_id = request.session.get('user_id')
@@ -46,13 +46,13 @@ def add_author_page(request):
     user = CustomUser.get_by_id(user_id)
     if user.role == 1:
         if request.method == 'POST':
-            name = request.POST['name']
-            surname = request.POST['surname']
-            patronymic = request.POST["patronymic"]
-
-            Author.create(name=name, surname=surname, patronymic=patronymic)
-            return redirect('all_authors')
-        return render(request, 'author/add_author.html', context={"librarian":True})
+            form = AuthorForm(request.POST)
+            if form.is_valid():
+                u = form.save()
+                return redirect('all_authors')
+        else:
+            form_class = AuthorForm
+            return render(request, 'author/add_author.html', context={"librarian":True, 'form': form_class})
     else:
         HttpResponse("<h1>You have no rights</h1>")
 
