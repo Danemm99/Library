@@ -72,6 +72,9 @@ def register(request):
     return render(request, 'registration/register.html', {'form': form})
 
 def login_view(request):
+    if CustomUser.objects.filter(is_active=True).exists():
+        return redirect('home')
+
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
