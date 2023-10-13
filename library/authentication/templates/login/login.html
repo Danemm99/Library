@@ -1,3 +1,30 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <title>Вхід</title>#}
+{#</head>#}
+{#<body>#}
+{#    <h1>Вхід</h1>#}
+{#    <form method="post" action="/login/">#}
+{#        {% csrf_token %}#}
+{#        {% if error %}#}
+{#            <p style="color: red;">{{ error }}</p>#}
+{#        {% endif %}#}
+{#            <label>Електронна пошта:#}
+{#                <input type="email" name="email" required>#}
+{#            </label><br>#}
+{#            <label>Пароль:#}
+{#                <input type="password" name="password" required>#}
+{#            </label><br>#}
+{#        <p><input type="submit" value="Увійти"> Ще не маєте акаунту? <a href="http://127.0.0.1:8000/register">Зареєструватися</a></p>#}
+{#    </form>#}
+{#</body>#}
+{#</html>#}
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,18 +34,19 @@
 </head>
 <body>
     <h1>Вхід</h1>
-    <form method="post" action="/login/">
+    <form method="post">
         {% csrf_token %}
-        {% if error %}
-            <p style="color: red;">{{ error }}</p>
-        {% endif %}
-            <label>Електронна пошта:
-                <input type="email" name="email" required>
-            </label><br>
-            <label>Пароль:
-                <input type="password" name="password" required>
-            </label><br>
-        <p><input type="submit" value="Увійти"> Ще не маєте акаунту? <a href="http://127.0.0.1:8000/register">Зареєструватися</a></p>
+        {{ form.email.label_tag }}
+        {{ form.email }}
+        <br>
+        {{ form.password.label_tag }}
+        {{ form.password }}
+        <br>
+        <input type="submit" value="Увійти">
     </form>
+    <p>Ще не маєте акаунту? <a href="{% url 'register' %}">Зареєструватися</a></p>
 </body>
 </html>
+
+
+

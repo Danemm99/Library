@@ -87,9 +87,9 @@ DATABASE = "simpledbmamager"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
+        'NAME': 'db_3',
         'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'PASSWORD': 'Zmienocez',
         'HOST': 'localhost',
         'PORT': '5432',
     }
