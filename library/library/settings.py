@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'authentication',
     'author',
     'book',
-    'order'
+    'order',
+    'rest_framework'
 ]
 
 AUTH_USER_MODEL = 'authentication.CustomUser'
@@ -89,7 +90,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'db_3',
         'USER': 'postgres',
-        'PASSWORD': '1234',
+        'PASSWORD': 'Zmienocez',
         'HOST': 'localhost',
         'PORT': '5432',
     }
