@@ -22,6 +22,7 @@ urlpatterns = [
     path('', include('book.urls')),
     path('', include('book.api_urls')),
     path('', include('author.api_urls')),
+    path('', include('order.api_urls')),
     path('', include('order.urls')),
     path('users/', include('authentication.show_user_urls')),
     path('authors/', include('author.urls')),
