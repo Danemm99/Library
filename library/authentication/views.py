@@ -108,12 +108,13 @@ def home(request):
         # Отримання об'єкта користувача за його ID
         user = CustomUser.get_by_id(user_id)
         context['user'] = user
-        context['librarian'] = True
+        context['librarian'] = False
 
     if role == 0:
         return render(request, 'user/user.html', context)
 
     else:
+        context['librarian'] = True
         return render(request, 'librarian/librarian.html', context)
 
 def main(request):

@@ -9,6 +9,8 @@
             {% if librarian is True %}
             <li><a href="{% url 'all_authors' %}">Автори</a></li>
             <li><a href="{% url 'all_orders' %}">Замовлення</a></li>
+            {% elif title == value %}
+            <li><a href="{% url 'show_orders' %}">Замовлення</a></li>
             {% endif %}
         </ul>
     </div>
