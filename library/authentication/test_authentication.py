@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
 
-def test_authentication():git
+def test_authentication():
     driver = webdriver.Edge()
 
     try:
