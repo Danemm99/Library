@@ -1,65 +1,6 @@
-from django.shortcuts import render, redirect
-from . models import CustomUser, CustomUserManager
-
 from django.shortcuts import render, redirect, get_object_or_404
 from . models import CustomUser
-
-from django.http import HttpResponse
-from book.models import Book
-
-
-from datetime import datetime, timedelta
-
 from .forms import RegistrationForm, LoginForm
-
-
-# def register(request):
-#     if request.method == 'POST':
-#         email = request.POST['email']
-#         password = request.POST['password']
-#         first_name = request.POST['first_name']
-#         middle_name = request.POST['middle_name']
-#         last_name = request.POST['last_name']
-#         role = int(request.POST.get('role', 0))
-#
-#         # Перевірка наявності користувача з таким же email
-#         if CustomUser.objects.filter(email=email).exists():
-#             return render(request, 'registration/register.html', {'error': 'Акаунт з такою поштою вже існує.'})
-#
-#         # Створення користувача
-#         if role == 0:
-#             user = CustomUser.objects.create(email=email, password=password, first_name=first_name, middle_name=middle_name,
-#                                   last_name=last_name, role=role)
-#             user.set_password(password)
-#             user.save()
-#
-#         elif role == 1:
-#             user = CustomUser.objects.create(email=email, password=password, first_name=first_name, middle_name=middle_name,
-#                                       last_name=last_name, role=role, is_staff=True, is_superuser=True)
-#             user.set_password(password)
-#             user.save()
-#
-#         return redirect('login')
-#
-#     return render(request, 'registration/register.html')
-#
-# def login_view(request):
-#     if CustomUser.objects.filter(is_active=True).exists():
-#         return redirect('home')
-#
-#     if request.method == 'POST':
-#         email = request.POST['email']
-#         password = request.POST['password']
-#         user = CustomUser.get_by_email(email)
-#         # Перевірка наявності користувача з таким email та паролем
-#         if user and user.password == password:
-#             # Логін користувача
-#             request.session['user_id'] = user.id
-#             CustomUser.objects.filter(id=user.id).update(is_active=True)
-#             return redirect('home')
-#         else:
-#             return render(request, 'login/login.html', {'error': 'Невірна пошта або пароль.'})
-#     return render(request, 'login/login.html')
 
 def register(request):
     if request.method == 'POST':
