@@ -85,17 +85,6 @@ WSGI_APPLICATION = 'library.wsgi.application'
 # }
 
 # DATABASE = "simpledbmamager"
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'db_3',
-#         'USER': 'postgres',
-#         'PASSWORD': 'Zmienocez',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
