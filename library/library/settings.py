@@ -84,14 +84,25 @@ WSGI_APPLICATION = 'library.wsgi.application'
 #     }
 # }
 
-DATABASE = "simpledbmamager"
+# DATABASE = "simpledbmamager"
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'db_3',
+#         'USER': 'postgres',
+#         'PASSWORD': 'Zmienocez',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'db_3',
         'USER': 'postgres',
         'PASSWORD': '1234',
-        'HOST': 'localhost',
+        'HOST': 'my_postgres_container',  # Зверніть увагу на цей рядок (ім'я контейнера PostgreSQL)
         'PORT': '5432',
     }
 }

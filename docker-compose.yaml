@@ -1,0 +1,29 @@
+version: '3'
+services:
+  db:
+    image: postgres:latest
+    container_name: my_postgres_container
+    environment:
+      POSTGRES_DB: db_3
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    networks:
+      - my_custom_network  # Назва мережі
+    ports:
+      - "5432:5432"
+
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: my_django_container
+    depends_on:
+      - db
+    networks:
+      - my_custom_network  # Назва мережі
+    ports:
+      - "8000:8000"
+
+networks:
+  my_custom_network:  # Назва мережі
+    driver: bridge
