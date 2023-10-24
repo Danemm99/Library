@@ -102,7 +102,7 @@ DATABASES = {
         'NAME': 'db_3',
         'USER': 'postgres',
         'PASSWORD': '1234',
-        'HOST': 'my_postgres_container',  # Зверніть увагу на цей рядок (ім'я контейнера PostgreSQL)
+        'HOST': 'my_postgres_container',
         'PORT': '5432',
     }
 }

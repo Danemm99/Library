@@ -8,7 +8,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 1234
     networks:
-      - my_custom_network  # Назва мережі
+      - my_custom_network
     ports:
       - "5432:5432"
 
@@ -20,10 +20,10 @@ services:
     depends_on:
       - db
     networks:
-      - my_custom_network  # Назва мережі
+      - my_custom_network
     ports:
       - "8000:8000"
 
 networks:
-  my_custom_network:  # Назва мережі
+  my_custom_network:
     driver: bridge
